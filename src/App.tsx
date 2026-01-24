@@ -4,7 +4,7 @@ const LandingPage = lazy(() => import('./components/LandingPage.tsx'))
 
 function App() {
   return (
-    <Suspense fallback={<div style={{ height: '100vh', backgroundColor: '#1a1a1a' }} />}>
+    <Suspense fallback={<div className="suspense-fallback" />}>
       <LandingPage />
     </Suspense>
   )

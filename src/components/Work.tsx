@@ -9,8 +9,8 @@ const Work = () => {
           <span className="work-duration">2017 &mdash; {new Date().getFullYear()}</span>
         </div>
         <div className="work-timeline">
-          {workHistoryHighlights.map((item, index) => (
-            <div className="work-item" key={index}>
+          {workHistoryHighlights.map((item) => (
+            <div className="work-item" key={`${item.year}-${item.company}`}>
               <div className="work-year">{item.year}</div>
               <div className="work-details">
                 <h3>{item.title}</h3>

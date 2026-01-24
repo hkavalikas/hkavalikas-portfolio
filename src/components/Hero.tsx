@@ -8,6 +8,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/charalampos-kavalikas"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit LinkedIn profile"
             >
               <img
                 src="/profile.webp"

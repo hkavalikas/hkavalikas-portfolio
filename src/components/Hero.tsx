@@ -11,9 +11,11 @@ const Hero = () => {
               aria-label="Visit LinkedIn profile"
             >
               <img
-                src="/profile.webp"
+                src="/profile-sm.png"
                 alt="Harry Kavalikas - Software Engineer"
                 className="hero-avatar"
+                width="36"
+                height="36"
               />
             </a>
             <span className="portfolio-label">PORTFOLIO / {new Date().getFullYear()}</span>
@@ -36,13 +38,13 @@ const Hero = () => {
         </div>
         <div className="hero-sidebar">
           <div className="currently">
-            <h3>CURRENTLY</h3>
+            <h2>CURRENTLY</h2>
             <p>Founding Software Engineer</p>
             <p>@ Hyper</p>
             <span className="duration">June 2023 — Present</span>
           </div>
           <div className="focus">
-            <h3>FOCUS</h3>
+            <h2>FOCUS</h2>
             <div className="tech-tags">
               <span>Java 8+</span>
               <span>Spring Boot</span>

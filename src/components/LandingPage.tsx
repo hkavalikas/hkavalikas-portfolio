@@ -77,9 +77,11 @@ const LandingPage = () => {
       </nav>
 
       {/* Components */}
-      <Hero />
-      <Work />
-      <Contact />
+      <main>
+        <Hero />
+        <Work />
+        <Contact />
+      </main>
     </div>
   )
 }

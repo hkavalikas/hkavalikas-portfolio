@@ -4,6 +4,32 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
+function inlineCssPlugin(): Plugin {
+  return {
+    name: 'inline-css',
+    enforce: 'post',
+    generateBundle(_, bundle) {
+      const cssAsset = Object.entries(bundle).find(([key]) => key.endsWith('.css'))
+      if (!cssAsset) return
+
+      const [cssFileName, cssChunk] = cssAsset
+      const cssContent = 'source' in cssChunk ? cssChunk.source : ''
+
+      const htmlAsset = bundle['index.html']
+      if (htmlAsset && 'source' in htmlAsset) {
+        const linkRegex = new RegExp(
+          `<link[^>]*href="[^"]*${cssFileName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>`,
+        )
+        htmlAsset.source = (htmlAsset.source as string).replace(
+          linkRegex,
+          `<style>${cssContent}</style>`,
+        )
+        delete bundle[cssFileName]
+      }
+    },
+  }
+}
+
 function sitemapPlugin(): Plugin {
   let outDir: string
   return {
@@ -36,6 +62,7 @@ function sitemapPlugin(): Plugin {
 export default defineConfig({
   plugins: [
     preact(),
+    inlineCssPlugin(),
     sitemapPlugin(),
     visualizer({
       filename: 'dist/stats.html',

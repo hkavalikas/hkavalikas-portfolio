@@ -20,12 +20,19 @@ const Contact = () => {
                 </a>
                 <a
                   href="https://www.linkedin.com/in/charalampos-kavalikas/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="contact-link"
                 >
                   <span className="link-title">LinkedIn</span>
                   <span className="link-handle">charalampos-kavalikas</span>
                 </a>
-                <a href="https://github.com/hkavalikas" className="contact-link">
+                <a
+                  href="https://github.com/hkavalikas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
                   <span className="link-title">GitHub</span>
                   <span className="link-handle">@hkavalikas</span>
                 </a>
@@ -34,7 +41,7 @@ const Contact = () => {
           </div>
         </div>
         <footer className="footer">
-          <span>© 2025 Harry Kavalikas. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Harry Kavalikas. All rights reserved.</span>
         </footer>
       </div>
     </section>

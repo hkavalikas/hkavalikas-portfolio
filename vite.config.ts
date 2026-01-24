@@ -1,17 +1,42 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, type Plugin } from 'vite'
+import preact from '@preact/preset-vite'
 import { visualizer } from 'rollup-plugin-visualizer'
+import { writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
+function sitemapPlugin(): Plugin {
+  let outDir: string
+  return {
+    name: 'generate-sitemap',
+    configResolved(config) {
+      outDir = config.build.outDir
+    },
+    writeBundle() {
+      const today = new Date().toISOString().split('T')[0]
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://kavalikas.com/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kavalikas.com/profile.webp</image:loc>
+      <image:title>Harry Kavalikas - Software Engineer</image:title>
+    </image:image>
+  </url>
+</urlset>
+`
+      writeFileSync(resolve(outDir, 'sitemap.xml'), sitemap)
+    },
+  }
+}
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      react: 'preact/compat',
-      'react-dom': 'preact/compat',
-      'react/jsx-runtime': 'preact/jsx-runtime',
-    },
-  },
   plugins: [
-    react(),
+    preact(),
+    sitemapPlugin(),
     visualizer({
       filename: 'dist/stats.html',
       open: false,
@@ -45,12 +70,6 @@ export default defineConfig({
       output: {
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            if (id.includes('react')) {
-              return 'react'
-            }
-            if (id.includes('react-dom')) {
-              return 'react-dom'
-            }
             return 'vendor'
           }
         },
@@ -59,7 +78,7 @@ export default defineConfig({
         assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
-    target: 'es2020',
+    target: 'es2022',
     sourcemap: false,
     cssCodeSplit: false,
     assetsInlineLimit: 10000,

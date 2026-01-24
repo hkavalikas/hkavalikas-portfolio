@@ -16,11 +16,6 @@ body {
   position: relative;
 }
 
-.suspense-fallback {
-  height: 100vh;
-  background-color: #0a0a0a;
-}
-
 /* Navigation */
 .nav-indicators {
   position: fixed;

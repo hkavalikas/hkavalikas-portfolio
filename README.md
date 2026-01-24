@@ -20,7 +20,7 @@ A modern, responsive portfolio website showcasing professional experience with a
 - **Styling**: Modern CSS3 with grid layouts and animations
 - **Optimization**: Code splitting, tree shaking, terser minification, inline CSS
 - **SEO**: Open Graph, Twitter Cards, structured data schema, build-time sitemap
-- **Performance**: ~11KB gzipped JS bundle
+- **Performance**: Minimal JS bundle with code splitting and tree shaking
 
 ## Project Structure
 
@@ -38,7 +38,6 @@ src/
 └── index.css            # Global styles and responsive design
 
 public/
-├── _headers             # Security and caching headers
 ├── manifest.json        # PWA web app manifest
 ├── robots.txt           # Search engine directives
 ├── favicon.png          # Site icon

@@ -19,7 +19,7 @@ const Contact = () => {
                   <span className="link-handle">hello@kavalikas.com</span>
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/charalampos-kavalikas/"
+                  href="https://www.linkedin.com/in/charalampos-kavalikas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-link"

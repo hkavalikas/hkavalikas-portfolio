@@ -43,7 +43,7 @@ public/
 ├── robots.txt           # Search engine directives
 ├── favicon.png          # Site icon
 ├── profile.webp         # Profile image for social sharing
-└── profile-sm.png       # Optimised avatar image
+└── profile-sm.webp      # Optimised avatar image
 ```
 
 ## Architecture

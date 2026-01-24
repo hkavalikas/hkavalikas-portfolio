@@ -31,7 +31,7 @@ const LandingPage = () => {
         const documentHeight = document.documentElement.scrollHeight
 
         if (scrollPosition + windowHeight >= documentHeight - 100) {
-          setActiveSection(2)
+          setActiveSection(sections.length - 1)
         } else {
           sections.forEach((section, index) => {
             const element = document.getElementById(section.id)

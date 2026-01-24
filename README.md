@@ -18,9 +18,9 @@ A modern, responsive portfolio website showcasing professional experience with a
 - **Frontend**: Preact, TypeScript
 - **Build**: Vite with @preact/preset-vite
 - **Styling**: Modern CSS3 with grid layouts and animations
-- **Optimization**: Code splitting, tree shaking, terser minification, inline CSS
+- **Optimization**: Tree shaking, terser minification, inline CSS
 - **SEO**: Open Graph, Twitter Cards, structured data schema, build-time sitemap
-- **Performance**: Minimal JS bundle with code splitting and tree shaking
+- **Performance**: Minimal JS bundle (~10KB gzipped) with tree shaking
 
 ## Project Structure
 
@@ -50,7 +50,7 @@ public/
 - **Component-based** Preact architecture with TypeScript
 - **Section-based navigation** with smooth scrolling and active state detection
 - **Responsive design** with adaptive layouts
-- **Performance-optimized** with code splitting, inline CSS, and optimised images
+- **Performance-optimized** with inline CSS, tree shaking, and optimised images
 - **SEO-friendly** with structured data, Open Graph, Twitter Cards, and build-time sitemap
 - **Accessible** with proper heading hierarchy, ARIA labels, and reduced-motion support
 - **PWA-ready** with web app manifest for installability

@@ -15,7 +15,7 @@
     "deploy": "cp CNAME dist/CNAME && gh-pages -d dist"
   },
   "dependencies": {
-    "preact": "10.28.2"
+    "preact": "^10.28.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

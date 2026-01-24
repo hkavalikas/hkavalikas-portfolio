@@ -16,6 +16,7 @@ const Hero = () => {
                 className="hero-avatar"
                 width="128"
                 height="128"
+                decoding="async"
               />
             </a>
             <span className="portfolio-label">PORTFOLIO / {new Date().getFullYear()}</span>

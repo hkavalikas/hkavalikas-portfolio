@@ -4,7 +4,7 @@ const Work = () => {
       <div className="work-container">
         <div className="work-header">
           <h2>Selected Work</h2>
-          <span className="work-duration">2017 — 2025</span>
+          <span className="work-duration">2017 — 2026</span>
         </div>
         <div className="work-timeline">
           <div className="work-item">

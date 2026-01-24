@@ -34,7 +34,7 @@ const Contact = () => {
           </div>
         </div>
         <footer className="footer">
-          <span>© 2025 Harry Kavalikas. All rights reserved.</span>
+          <span>© 2026 Harry Kavalikas. All rights reserved.</span>
         </footer>
       </div>
     </section>

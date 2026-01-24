@@ -5,8 +5,6 @@ import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { createHash } from 'node:crypto'
 
-let inlinedCssHash = ''
-
 function inlineCssPlugin(): Plugin {
   return {
     name: 'inline-css',
@@ -18,17 +16,33 @@ function inlineCssPlugin(): Plugin {
       const [cssFileName, cssChunk] = cssAsset
       const cssContent = 'source' in cssChunk ? (cssChunk.source as string) : ''
 
-      inlinedCssHash = createHash('sha256').update(cssContent).digest('base64')
+      const cssHash = createHash('sha256').update(cssContent).digest('base64')
 
       const htmlAsset = bundle['index.html']
       if (htmlAsset && 'source' in htmlAsset) {
+        let html = htmlAsset.source as string
+
         const linkRegex = new RegExp(
           `<link[^>]*href="[^"]*${cssFileName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>`,
         )
-        htmlAsset.source = (htmlAsset.source as string).replace(
-          linkRegex,
-          `<style>${cssContent}</style>`,
+        html = html.replace(linkRegex, `<style>${cssContent}</style>`)
+
+        const csp = [
+          "default-src 'self'",
+          "script-src 'self'",
+          `style-src 'self' 'sha256-${cssHash}'`,
+          "img-src 'self' data:",
+          "font-src 'self'",
+          "connect-src 'self'",
+          "base-uri 'none'",
+          "form-action 'none'",
+        ].join('; ')
+        html = html.replace(
+          '</head>',
+          `  <meta http-equiv="Content-Security-Policy" content="${csp}">\n  </head>`,
         )
+
+        htmlAsset.source = html
         delete bundle[cssFileName]
       }
     },
@@ -61,53 +75,6 @@ function buildAssetsPlugin(): Plugin {
 </urlset>
 `
       writeFileSync(resolve(outDir, 'sitemap.xml'), sitemap)
-
-      const styleSrc = inlinedCssHash ? `'self' 'sha256-${inlinedCssHash}'` : `'self'`
-
-      const headers = `/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src ${styleSrc}; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'
-
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
-  X-Robots-Tag: index, follow
-
-/*.js
-  Cache-Control: public, max-age=31536000, immutable
-  Content-Type: application/javascript; charset=utf-8
-
-/*.webp
-  Cache-Control: public, max-age=31536000, immutable
-  Content-Type: image/webp
-  Accept-Ranges: bytes
-
-/*.svg
-  Cache-Control: public, max-age=31536000, immutable
-  Content-Type: image/svg+xml
-
-/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
-  Content-Type: font/woff2
-  Cross-Origin-Embedder-Policy: require-corp
-
-/*.json
-  Cache-Control: public, max-age=86400
-  Content-Type: application/json; charset=utf-8
-
-/sitemap.xml
-  Cache-Control: public, max-age=86400
-  Content-Type: application/xml; charset=utf-8
-
-/robots.txt
-  Cache-Control: public, max-age=86400
-  Content-Type: text/plain; charset=utf-8
-`
-      writeFileSync(resolve(outDir, '_headers'), headers)
     },
   }
 }
@@ -118,7 +85,7 @@ export default defineConfig({
     inlineCssPlugin(),
     buildAssetsPlugin(),
     visualizer({
-      filename: 'dist/stats.html',
+      filename: 'stats.html',
       open: false,
       gzipSize: true,
       brotliSize: true,

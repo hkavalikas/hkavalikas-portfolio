@@ -1,13 +1,7 @@
-import { lazy, Suspense } from 'react'
-
-const LandingPage = lazy(() => import('./components/LandingPage.tsx'))
+import LandingPage from './components/LandingPage'
 
 function App() {
-  return (
-    <Suspense fallback={<div className="suspense-fallback" />}>
-      <LandingPage />
-    </Suspense>
-  )
+  return <LandingPage />
 }
 
 export default App

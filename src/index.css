@@ -150,6 +150,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  font-size: inherit;
 }
 
 .first-name {
@@ -203,8 +204,8 @@ body {
   gap: 8px;
 }
 
-.currently h3,
-.focus h3 {
+.currently h2,
+.focus h2 {
   font-size: 11px;
   letter-spacing: 1px;
   color: #8a8a8a;

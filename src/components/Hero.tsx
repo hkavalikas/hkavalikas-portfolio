@@ -4,6 +4,13 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-header">
+            <a href="https://www.linkedin.com/in/charalampos-kavalikas" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/profile.webp"
+                alt="Harry Kavalikas - Software Engineer"
+                className="hero-avatar"
+              />
+            </a>
             <span className="portfolio-label">PORTFOLIO / 2026</span>
           </div>
           <h1 className="hero-name">

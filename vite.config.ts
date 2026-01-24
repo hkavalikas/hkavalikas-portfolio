@@ -1,17 +1,10 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import preact from '@preact/preset-vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      react: 'preact/compat',
-      'react-dom': 'preact/compat',
-      'react/jsx-runtime': 'preact/jsx-runtime',
-    },
-  },
   plugins: [
-    react(),
+    preact(),
     visualizer({
       filename: 'dist/stats.html',
       open: false,

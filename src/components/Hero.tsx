@@ -11,11 +11,11 @@ const Hero = () => {
               aria-label="Visit LinkedIn profile"
             >
               <img
-                src="/profile-sm.png"
+                src="/profile-sm.webp"
                 alt="Harry Kavalikas - Software Engineer"
                 className="hero-avatar"
-                width="36"
-                height="36"
+                width="128"
+                height="128"
               />
             </a>
             <span className="portfolio-label">PORTFOLIO / {new Date().getFullYear()}</span>

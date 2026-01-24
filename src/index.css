@@ -49,8 +49,15 @@ body {
   color: #8a8a8a;
 }
 
-.nav-indicator:hover {
+.nav-indicator:hover,
+.nav-indicator:focus-visible {
   color: #ffffff;
+  outline: none;
+}
+
+.nav-indicator:focus-visible .nav-line {
+  width: 48px;
+  background: #22c55e;
 }
 
 .nav-indicator.active {
@@ -174,26 +181,8 @@ body {
   color: #8a8a8a;
 }
 
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  background: #c52222;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
 .location {
   margin-left: auto;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
 }
 
 .hero-sidebar {
@@ -452,5 +441,16 @@ body {
 
   .footer {
     text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }

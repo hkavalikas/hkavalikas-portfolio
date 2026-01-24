@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Hero from './Hero'
 import Work from './Work'
 import Contact from './Contact'
@@ -11,44 +11,50 @@ const sections = [
 
 const LandingPage = () => {
   const [activeSection, setActiveSection] = useState(0)
+  const ticking = useRef(false)
 
-  const scrollToSection = (index: number) => {
+  const scrollToSection = useCallback((index: number) => {
     const element = document.getElementById(sections[index].id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-  }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
+      if (ticking.current) return
+      ticking.current = true
 
-      // If we're near the bottom of the page, select contact
-      if (scrollPosition + windowHeight >= documentHeight - 100) {
-        setActiveSection(2) // Contact section
-        return
-      }
+      requestAnimationFrame(() => {
+        const scrollPosition = window.scrollY
+        const windowHeight = window.innerHeight
+        const documentHeight = document.documentElement.scrollHeight
 
-      sections.forEach((section, index) => {
-        const element = document.getElementById(section.id)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetBottom = offsetTop + element.offsetHeight
+        if (scrollPosition + windowHeight >= documentHeight - 100) {
+          setActiveSection(2)
+        } else {
+          sections.forEach((section, index) => {
+            const element = document.getElementById(section.id)
+            if (element) {
+              const offsetTop = element.offsetTop
+              const offsetBottom = offsetTop + element.offsetHeight
 
-          if (
-            scrollPosition + windowHeight / 2 >= offsetTop &&
-            scrollPosition + windowHeight / 2 < offsetBottom
-          ) {
-            setActiveSection(index)
-          }
+              if (
+                scrollPosition + windowHeight / 2 >= offsetTop &&
+                scrollPosition + windowHeight / 2 < offsetBottom
+              ) {
+                setActiveSection(index)
+              }
+            }
+          })
         }
+
+        ticking.current = false
       })
     }
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Call once to set initial state
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])

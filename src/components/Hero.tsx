@@ -30,7 +30,11 @@ const Hero = () => {
               Founding Software Engineer specializing in <strong>backend systems</strong>,{' '}
               <strong>Node.js</strong>, <strong>Spring Boot</strong>, and{' '}
               <strong>AWS architecture</strong>. Building scalable solutions with a foundation in
-              Computer Science (BSc, King’s College London)
+              Computer Science (BSc, King's College London) and volunteering at{' '}
+              <a href="https://codeyourfuture.io/" target="_blank" rel="noopener noreferrer">
+                CodeYourFuture
+              </a>
+              .
             </p>
             <div className="status">
               <span className="location">London, UK</span>

@@ -4,6 +4,7 @@ export interface WorkItem {
   company: string
   description: string
   tech: string[]
+  current?: boolean
 }
 
 export const workHistoryHighlights: WorkItem[] = [
@@ -14,6 +15,7 @@ export const workHistoryHighlights: WorkItem[] = [
     description:
       'Leading the development of backend systems and infrastructure for the flagship product, establishing technical direction and architecture.',
     tech: ['TypeScript', 'Node.js', 'Express.js', 'AWS', 'Terraform'],
+    current: true,
   },
   {
     year: 2023,

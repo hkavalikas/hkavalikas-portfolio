@@ -10,8 +10,14 @@ const Work = () => {
         </div>
         <div className="work-timeline">
           {workHistoryHighlights.map((item) => (
-            <div className="work-item" key={`${item.year}-${item.company}`}>
-              <div className="work-year">{item.year}</div>
+            <div
+              className={`work-item${item.current ? ' work-item--current' : ''}`}
+              key={`${item.year}-${item.company}`}
+            >
+              <div className="work-year">
+                {item.year}
+                {item.current && <span className="current-badge">Present</span>}
+              </div>
               <div className="work-details">
                 <h3>{item.title}</h3>
                 <p className="company">{item.company}</p>

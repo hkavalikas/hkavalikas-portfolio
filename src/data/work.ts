@@ -14,7 +14,7 @@ export const workHistoryHighlights: WorkItem[] = [
     company: 'Hyper',
     description:
       'Leading the development of backend systems and infrastructure for the flagship product, establishing technical direction and architecture.',
-    tech: ['TypeScript', 'Node.js', 'Express.js', 'AWS', 'Terraform'],
+    tech: ['TypeScript', 'Node.js', 'React', 'AWS', 'Terraform'],
     current: true,
   },
   {
@@ -23,7 +23,7 @@ export const workHistoryHighlights: WorkItem[] = [
     company: 'Mirada Medical',
     description:
       'Developed and maintained the Interventional Radiology Solution (Simplicit90Y\u2122) and SaaS (DaaS) solutions.',
-    tech: ['Java 11', 'Spring Boot', 'AWS', 'CloudFormation'],
+    tech: ['Java 11', 'Spring Boot', 'React', 'AWS', 'CloudFormation'],
   },
   {
     year: 2022,

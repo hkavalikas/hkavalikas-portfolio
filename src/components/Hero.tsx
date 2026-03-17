@@ -51,12 +51,13 @@ const Hero = () => {
           <div className="focus">
             <h2>FOCUS</h2>
             <div className="tech-tags">
-              <span>Java 8+</span>
-              <span>Spring Boot</span>
-              <span>AWS</span>
               <span>TypeScript</span>
               <span>Node.js</span>
+              <span>React</span>
+              <span>AWS</span>
               <span>Terraform</span>
+              <span>Java 8+</span>
+              <span>Spring Boot</span>
             </div>
           </div>
         </div>

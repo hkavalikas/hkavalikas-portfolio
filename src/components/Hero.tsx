@@ -46,7 +46,7 @@ const Hero = () => {
             <h2>CURRENTLY</h2>
             <p>Founding Software Engineer</p>
             <p>@ Hyper</p>
-            <span className="duration">June 2023 — Present</span>
+            <span className="duration">July 2023 — Present</span>
           </div>
           <div className="focus">
             <h2>FOCUS</h2>

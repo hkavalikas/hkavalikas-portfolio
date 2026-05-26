@@ -16,7 +16,7 @@ export const workHistoryHighlights: WorkItem[] = [
       "Led the backend development and infrastructure for the flagship consumer social app, later expanding the platform's purpose as a source of real-world AI training data for robotics companies, defining technical direction and architecture throughout.\n" +
       '\n' +
       'Key Achievements:\n' +
-      '• Scaled from 0 to 12,000+ weekly active users at peak\n' +
+      '• Scaled from 0 to 12,000+ weekly active users at peak across EU & US\n' +
       '• 180,000+ registered users\n' +
       '• 92,000+ social connections\n' +
       '• 3M+ accepted user submissions',

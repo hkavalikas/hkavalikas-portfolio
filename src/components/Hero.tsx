@@ -27,7 +27,7 @@ const Hero = () => {
           </h1>
           <div className="hero-description">
             <p>
-              Founding Software Engineer specializing in <strong>backend systems</strong>,{' '}
+              Senior Software Engineer specializing in <strong>backend systems</strong>,{' '}
               <strong>Node.js</strong>, <strong>Spring Boot</strong>, and{' '}
               <strong>AWS architecture</strong>. Building scalable solutions with a foundation in
               Computer Science (BSc, King's College London) and volunteering at{' '}
@@ -44,9 +44,9 @@ const Hero = () => {
         <div className="hero-sidebar">
           <div className="currently">
             <h2>CURRENTLY</h2>
-            <p>Founding Software Engineer</p>
-            <p>@ Hyper</p>
-            <span className="duration">July 2023 — Present</span>
+            <p>Senior Backend Engineer</p>
+            <p>@ Freetrade</p>
+            <span className="duration">June 2026 — Present</span>
           </div>
           <div className="focus">
             <h2>FOCUS</h2>

@@ -9,6 +9,14 @@ export interface WorkItem {
 
 export const workHistoryHighlights: WorkItem[] = [
   {
+    year: 2026,
+    title: 'Senior Backend Engineer',
+    company: 'Freetrade',
+    description: 'Coming Soon...',
+    tech: ['TypeScript', 'Node.js', 'React', 'GCP', 'Terraform', 'K8s'],
+    current: true,
+  },
+  {
     year: 2023,
     title: 'Founding Software Engineer',
     company: 'Hyper',
@@ -21,7 +29,6 @@ export const workHistoryHighlights: WorkItem[] = [
       '• 92,000+ social connections\n' +
       '• 3M+ accepted user submissions',
     tech: ['TypeScript', 'Node.js', 'React', 'AWS', 'Terraform'],
-    current: true,
   },
   {
     year: 2023,

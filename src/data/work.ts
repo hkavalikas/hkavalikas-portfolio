@@ -12,7 +12,8 @@ export const workHistoryHighlights: WorkItem[] = [
     year: 2026,
     title: 'Senior Backend Engineer',
     company: 'Freetrade',
-    description: 'Coming Soon...',
+    description:
+      'Senior engineer on the Trading team, building backend services that help customers on their trading journey, including statements, transfers and on-call improvements.',
     tech: ['TypeScript', 'Node.js', 'React', 'GCP', 'Terraform', 'K8s'],
     current: true,
   },
